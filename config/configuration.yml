@@ -1,0 +1,6 @@
+delivery_method: :smtp
+  smtp_settings:
+  domain: 'example.com'
+  address: "mailserver.example.com"
+  port: 25
+  openssl_verify_mode: none

@@ -1,0 +1,45 @@
+<h2>Henmise</h2>
+<h5>新規ユーザー登録</h5>
+<h6>Henmiseはちょっと変わったコンセプトの飲食店をシェアできるサイトです。</h6>
+<h6>自分の投稿へのLike数に応じてHenmiseオリジナルアバターがもらえます！</h6>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :avator_id, :value => 5 %>
+  </div>
+
+  <div class="field">
+      <%= f.label :ニックネーム %><br/>
+      <%= f.text_field :name, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br/>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= link_to 'ユーザー登録しないで使う', submits_path %><br />
+
+<%= render "devise/shared/links" %>
+<div class="top_avator">
+      <%= image_tag '1.PNG' %><br>
+</div>

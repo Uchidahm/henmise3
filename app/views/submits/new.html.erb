@@ -1,0 +1,66 @@
+<!-- ここからメニューバー -->
+<div class="menu">
+    <div class="title">MENU</div>
+    <ul class="nav">
+      <li><%=link_to "Toppage", submits_path %></li>
+      <% if user_signed_in? %>
+      <li><%=link_to "MyPage", mypages_path %></li>
+      <li><%=link_to "Posting", new_submit_path %></li>
+      <li><%= link_to 'Avator', edit_mypage_path(current_user) %></li>
+      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      <%end%>
+    </ul>
+</div>
+<!-- ここまでメニューバー -->
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <div class="post_box">
+    <%= form_for(@submit, :url => { controller: 'submits',action: 'create'}) do |f| %>
+      <div class="field">
+          <%= f.label :name, "飲食店の名前" %>
+          <%= f.text_field :name, :class =>"form-control" %>
+      </div>
+
+      <div class="field">
+          <%= f.label :address, "住所" %>
+          <%= f.text_field :address , :class =>"form-control" %>
+      </div>
+
+      <div class="field">
+          <%= f.label :kind, "飲食店の種類(ex:カフェ)" %>
+          <%= f.text_field :kind, :class =>"form-control"  %>
+      </div>
+
+      <div class="field">
+          <%= f.label :impression, "感想" %>
+          <%= f.text_field :impression , :class =>"form-control" %>
+      </div>
+
+
+      <div class="field">
+          <%= f.label :money, "使った金額" %>
+          <%= f.text_field :money , :class =>"form-control" %>
+      </div>
+      <%# <div class="field"> %>
+           <%# <%= f.nested_fields_for :tags do |ff| %>
+             <%# <%= ff.label :name, "Tag" %>
+             <%# <%= ff.text_field :name , :class =>"form-control" %>
+             <%# <%= ff.remove_nested_fields_link %>
+           <%# <% end %>
+           <%# <%= f.add_nested_fields_link :tags %>
+       <%# </div> %>
+
+    <%= f.label :image, "写真" %>
+      <%= f.file_field :image, :multiple => true  %>
+
+      <div class="action">
+          <%= f.submit "Posting" ,:class => "btn btn-primary" %>
+      </div>
+
+    <% end %>
+    </div>
+
+  </div>
+  <div class="col-sm-3"></div>
+</div>

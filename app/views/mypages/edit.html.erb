@@ -1,0 +1,24 @@
+<!-- ここからメニューバー -->
+<div class="menu">
+    <div class="title">MENU</div>
+    <ul class="nav">
+      <li><%=link_to "Toppage", submits_path %></li>
+      <% if user_signed_in? %>
+      <li><%=link_to "MyPage", mypages_path %></li>
+      <li><%=link_to "Posting", new_submit_path %></li>
+      <li><%= link_to 'Avator', edit_mypage_path(current_user) %></li>
+      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      <%end%>
+    </ul>
+</div>
+<!-- ここまでメニューバー -->
+
+<%= form_for(@user, url:{controller:'mypages', action:'update'})do |f| %>
+<% @avators.each do |avator| %>
+  <label><%= f.radio_button :avator_id, avator.avator_id %>
+    <div class ="avator"><%= image_tag avator.avator.image.to_s ,:width => '50%' ,:height => '50%'%> </div></label>
+<% end %>
+ <div class="action">
+   <%= f.submit %>
+ </div>
+<% end %>

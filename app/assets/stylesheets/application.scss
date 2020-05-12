@@ -1,0 +1,238 @@
+@import "bootstrap";
+@import "submits";
+@import "mypages";
+
+// ここからメニューバー
+@mixin vertical-align($position) {
+  position:$position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin all-transition($time)
+{
+    transition: all $time;
+    -webkit-transition: all $time;
+}
+body
+{
+  margin: 0;
+  font-family: 'Muli', sans-serif;
+}
+.menu {
+    font-weight: 100;
+    background: #efefef;
+    width: 150px;
+    height: 100%;
+    padding-left: 50px;
+    position: fixed;
+    z-index: 100;
+    -webkit-box-shadow: -3px 0px 5px 0px rgba(0,0,0,0.2);
+    box-shadow: -3px 0px 5px 0px rgba(0,0,0,0.2);
+    right: -130px;
+    @include all-transition(0.3s);
+    color: #222;
+
+    &:hover, &:focus
+    {
+        transform: translate3d(-130px, 0, 0);
+        animation-timing-function: 1s ease-in;
+    }
+    .title
+    {
+        top:50%;
+        @include vertical-align(absolute);
+        transform: rotate(270deg);
+        left: 10px;
+        font-weight: 800;
+        font-size: 15px;
+
+    }
+    .nav
+    {
+        @include vertical-align(absolute);
+    font-weight: 100;
+
+        li
+        {
+                padding-bottom: 30px;
+                list-style-type: none;
+                a
+                {
+                    display: block;
+                    text-decoration: none;
+                    color: inherit;
+                    @include all-transition(0.3s);
+
+                    &:hover
+                    {
+                        color: #aaa;
+                    }
+                }
+        }
+    }
+}
+
+.menu{
+  background-color: black;
+  color: white;
+  border-style: solid;
+  border-right-color: black;
+  border-top-color: black;
+  border-bottom-color: black;
+  border-left-color: red;
+}
+// ここまでメニューバー
+
+// ここからテレビ
+body{
+  background:black;
+  font-family: 'Varela', sans-serif;
+}
+
+.glitch{
+  color:white;
+  position:fixed;
+  margin:0 auto;
+  left:50%;
+}
+@keyframes noise-anim{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:after{
+  content:attr(data-text);
+  position:absolute;
+  left:2px;
+  text-shadow:-1px 0 red;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0);
+  animation:noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:before{
+  content:attr(data-text);
+  position:absolute;
+  left:-2px;
+  text-shadow:1px 0 blue;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0);
+  animation:noise-anim-2 3s infinite linear alternate-reverse;
+}
+// ここまでテレビ
+
+
+
+body {
+  border-top-color: #e74c3c;
+  border-right-color: #e74c3c;
+  border-bottom-color: #e74c3c;
+  border-left-color: #e74c3c;
+  animation:  border-top-color 10s infinite;
+  animation:  border-right-color 10s infinite;
+  animation:  border-bottom-color 10s infinite;
+  animation:  border-left-color 10s infinite;
+  -webkit-animation: border-top-color 10s infinite;
+  -webkit-animation: border-right-color 10s infinite;
+  -webkit-animation: border-bottom-color 10s infinite;
+  -webkit-animation: border-left-color 10s infinite;
+}
+@-webkit-keyframes border-top-color {
+  0% { border-top-color: #e74c3c; }
+  20% { border-top-color: #f1c40f; }
+  40% { border-top-color: #1abc9c; }
+  60% { border-top-color: #3498db; }
+  80% { border-top-color: #9b59b6; }
+  100% { border-top-color: #e74c3c; }
+}
+@-webkit-keyframes border-right-color {
+  0% { border-right-color: #e74c3c; }
+  20% { border-right-color: #f1c40f; }
+  40% { border-right-color: #1abc9c; }
+  60% { border-right-color: #3498db; }
+  80% { border-right-color: #9b59b6; }
+  100% { border-right-color: #e74c3c; }
+}
+@-webkit-keyframes border-bottom-color {
+  0% { border-bottom-color: #e74c3c; }
+  20% { border-bottom-color: #f1c40f; }
+  40% { border-bottom-color: #1abc9c; }
+  60% { border-bottom-color: #3498db; }
+  80% { border-bottom-color: #9b59b6; }
+  100% { border-bottom-color: #e74c3c; }
+}
+@-webkit-keyframes border-left-color {
+  0% { border-left-color: #e74c3c; }
+  20% { border-left-color: #f1c40f; }
+  40% { border-left-color: #1abc9c; }
+  60% { border-left-color: #3498db; }
+  80% { border-left-color: #9b59b6; }
+  100% { border-left-color: #e74c3c; }
+}
+
+@keyframes border-top-color {
+  0% { border-top-color: #e74c3c; }
+  20% { border-top-color: #f1c40f; }
+  40% { border-top-color: #1abc9c; }
+  60% { border-top-color: #3498db; }
+  80% { border-top-color: #9b59b6; }
+  100% { border-top-color: #e74c3c; }
+}
+@keyframes border-right-color {
+  0% { border-right-color: #e74c3c; }
+  20% { border-right-color: #f1c40f; }
+  40% { border-right-color: #1abc9c; }
+  60% { border-right-color: #3498db; }
+  80% { border-right-color: #9b59b6; }
+  100% { border-right-color: #e74c3c; }
+}
+@keyframes border-bottom-color {
+  0% { border-bottom-color: #e74c3c; }
+  20% { border-bottom-color: #f1c40f; }
+  40% { border-bottom-color: #1abc9c; }
+  60% { border-bottom-color: #3498db; }
+  80% { border-bottom-color: #9b59b6; }
+  100% { border-bottom-color: #e74c3c; }
+}
+@keyframes border-left-color {
+  0% { border-left-color: #e74c3c; }
+  20% { border-left-color: #f1c40f; }
+  40% { border-left-color: #1abc9c; }
+  60% { border-left-color: #3498db; }
+  80% { border-left-color: #9b59b6; }
+  100% { border-left-color: #e74c3c; }
+}
+
+p {
+  font-family: Meiryo, "Hiragino Kaku Gothic Pro W3",sans-serif;
+  text-align: center;
+  margin-top: 150px;
+  color: #fff;
+}
+
+.top_avator{
+  // border: 5px  solid red;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  filter: drop-shadow(0 0 10px white);
+}

@@ -1,0 +1,129 @@
+// Place all the styles related to the submits controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+body {
+  background-color:black;
+  color: white;
+
+}
+
+.submits_index {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.image_box{
+  flex: 1;
+}
+
+.imageman{
+    margin-top: 1%;
+}
+
+.card{
+  background-color: black;
+  border-color: yellow;
+  }
+
+.list-group-item{
+  background-color: black;
+  border-color: yellow;
+}
+
+// ここからテレビ
+// body{
+//   background:black;
+//   font-family: 'Varela', sans-serif;
+// }
+//
+// .glitch{
+//   color:white;
+//   position:relative;
+//   margin:0 auto;
+// }
+// @keyframes noise-anim{
+//   $steps:20;
+//   @for $i from 0 through $steps{
+//     #{percentage($i*(1/$steps))}{
+//       clip:rect(random(100)+px,9999px,random(100)+px,0);
+//     }
+//   }
+// }
+// .glitch:after{
+//   content:attr(data-text);
+//   position:absolute;
+//   left:2px;
+//   text-shadow:-1px 0 red;
+//   top:0;
+//   color:white;
+//   background:black;
+//   overflow:hidden;
+//   clip:rect(0,900px,0,0);
+//   animation:noise-anim 2s infinite linear alternate-reverse;
+// }
+//
+// @keyframes noise-anim-2{
+//   $steps:20;
+//   @for $i from 0 through $steps{
+//     #{percentage($i*(1/$steps))}{
+//       clip:rect(random(100)+px,9999px,random(100)+px,0);
+//     }
+//   }
+// }
+// .glitch:before{
+//   content:attr(data-text);
+//   position:absolute;
+//   left:-2px;
+//   text-shadow:1px 0 blue;
+//   top:0;
+//   color:white;
+//   background:black;
+//   overflow:hidden;
+//   clip:rect(0,900px,0,0);
+//   animation:noise-anim-2 3s infinite linear alternate-reverse;
+// }
+// ここまでテレビ
+
+.image{
+  // justify-content: center;
+  text-align: center;
+}
+
+
+// ここからホバーエフェクト
+// ここまでホバーエフェクト
+
+#map {
+  height: 400px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+  width: 80%
+}
+
+.post_box {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: black;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+.post_box p {
+    margin: 0;
+    padding: 0;
+}
+.form-control{
+  background-color: black;
+}
+
+li {
+  list-style: none;
+}

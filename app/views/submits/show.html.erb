@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-10">
+      <!-- ここからメニューバー -->
+      <div class="menu">
+          <div class="title">MENU</div>
+          <ul class="nav">
+            <li><%=link_to "Toppage", submits_path %></li>
+            <% if user_signed_in? %>
+            <li><%=link_to "MyPage", mypages_path %></li>
+            <li><%=link_to "Posting", new_submit_path %></li>
+            <li><%= link_to 'Avator', edit_mypage_path(current_user) %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+            <%end%>
+          </ul>
+      </div>
+      <!-- ここまでメニューバー -->
+
+<link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
+<!-- ↑これはテレビ -->
+      <h1>Henmise</h1>
+      <div class="card">
+        <div class="image"><%= image_tag @submit.images.first.image.to_s ,width: "90%"%></div>
+        <div class="card-body">
+          <h3 class="card-title"><%= @submit.name %></h3>
+          ♡Like: <%= @submit.likes.count %><br>
+          <%# タグ: <%= @submit.tag %>
+          <% if user_signed_in? %>
+          <% if current_user.already_liked?(@submit) %>
+           <%= button_to 'Likeを取り消す', submit_like_path(@submit), method: :delete %>
+          <% else %>
+           <%= form_for [@submit, @like] do |f| %>
+             <%= f.hidden_field :user_id, :value => current_user.id %>
+             <%= f.hidden_field :submit_id, :value => @submit.id %>
+             <%= f.submit '♡' %>
+           <% end %>
+           <% end %>
+          <% end %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">住所: <%= @submit.address %></li>
+          <li class="list-group-item">種類: <%= @submit.kind %></li>
+          <li class="list-group-item">使った金額: <%= @submit.money %></li>
+          <li class="list-group-item">感想: <%= @submit.impression %></li>
+          <li class="list-group-item">
+            <div id=map></div>
+            <script type="text/javascript">
+              function initMap() {
+
+                var test = {lat: <%= @submit.latitude %>, lng: <%= @submit.longitude %>};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 15,
+                  center: test
+                });
+                var transitLayer = new google.maps.TransitLayer();
+                transitLayer.setMap(map);
+
+                var contentString = '住所：<%= @submit.address %>';
+                var infowindow = new google.maps.InfoWindow({
+                  content: contentString
+                });
+
+                var marker = new google.maps.Marker({
+                  position:test,
+                  map: map,
+                  title: contentString
+                });
+
+                marker.addListener('click', function() {
+                  infowindow.open(map, marker);
+                });
+              }
+            </script>
+            <script async defer
+              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDoht4ANB4eIveBmly94TbKNv4E6Ll61vw&callback=initMap">
+            </script>
+          </li>
+          <%# <li class="list-group-item">いいねしたユーザー %>
+          <%# <% @submit.liked_users.each do |user| %>
+          <%# </li> %>
+          <%# <%= link_to user.name, mypages_path %>
+          <%# <% end %>
+
+        </ul>
+        <!-- <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div> -->
+      </div>
+
+    </div>
+    <div class="col-sm-1">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+// Place all the styles related to the mypages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+  text-align: center;
+}
+
+.avator{
+  // border: 5px  solid red;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  filter: drop-shadow(0 0 10px white);
+}
+
+.blulight{
+// border: 5px  solid red;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+// ここからブルーライト
+// ここまでブルーライト
+
+.post{
+  height: 50vh;
+  overflow: scroll;
+
+}
+
+.posttitle{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+// ここからふきだし
+.post {
+ 	position: relative;
+	display: inline-block;
+ 	margin: 1.5em 0 1.5em 15px;
+	padding: 7px 10px;
+	min-width: 120px;
+ 	max-width: 100%;
+ 	color: white;
+	font-size: 16px;
+	background: black;
+ 	border: solid 3px blue;
+ 	box-sizing: border-box;
+}
+
+.post:before{
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -24px;
+ 	margin-top: -12px;
+	border: 12px solid red;
+	border-right: 12px solid white;
+ 	z-index: 2;
+}
+
+// .post:after{
+// 	content: "";
+// 	position: absolute;
+// 	top: 50%;
+// 	left: -30px;
+//  	margin-top: -14px;
+// 	border: 14px solid transparent;
+// 	border-right: 14px solid white;
+//  	z-index: 1;
+// }
+
+// ここまでふきだし
+
+
+
+.header_title{
+  text-align: center;
+  border-bottom: 5px solid YellowGreen;
+  // margin-top: 5%;
+}
+
+li {
+  list-style: none;
+}

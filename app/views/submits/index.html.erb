@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+
+  <body>
+    <script>
+// ここからホバーエフェクト
+    // ここまでホバーエフェクト
+    </script>
+  </body>
+</html>
+
+<!-- ここからメニューバー -->
+<div class="menu">
+    <div class="title">MENU</div>
+    <ul class="nav">
+      <li><%=link_to "Toppage", submits_path %></li>
+      <% if user_signed_in? %>
+      <li><%=link_to "MyPage", mypages_path %></li>
+      <li><%=link_to "Posting", new_submit_path %></li>
+      <li><%= link_to 'Avator', edit_mypage_path(current_user) %></li>
+      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      <%else%>
+      <li><%=link_to "SignIn?", user_session_path %></li>
+      <%end%>
+
+      <%# ここから検索  %>
+      <%= form_tag submits_path,:method => 'get' do %> <%#　projects_pathはモデル名で読みかえること %>
+        <p>
+          <%= text_field_tag :search, params[:search],:size => '5%'  %>
+          <%= submit_tag "Search", :name => nil %>
+        </p>
+      <% end %>
+      <%= yield %>
+      <!-- ここまで検索 -->
+    </ul>
+</div>
+<!-- ここまでメニューバー -->
+
+<div class="submits_index">
+    <div class="image_box" >
+      <% @submits.each_with_index do |t, i|  %>
+        <% if i % 3 == 0  %>
+          <% if Image.exists?(:submit_id => t.id) %>
+            <%= link_to submit_path(t.id) do %>
+              <%= image_tag t.images.first.image.to_s ,width: "99%" , :class=>"imageman"%>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="image_box" >
+      <% @submits.each_with_index do |t, i|  %>
+        <% if i % 3 == 1  %>
+          <% if Image.exists?(:submit_id => t.id) %>
+            <%= link_to submit_path(t.id) do %>
+              <%= image_tag t.images.first.image.to_s ,width: "99%", :class=>"imageman" %>
+            <%end%>
+          <% end %>
+        <% end %>
+    <% end %>
+    </div>
+    <div class="image_box" >
+      <% @submits.each_with_index do |t, i|  %>
+        <% if i % 3 == 2  %>
+          <% if Image.exists?(:submit_id => t.id) %>
+            <%= link_to submit_path(t.id) do %>
+              <%= image_tag t.images.first.image.to_s ,width: "99%" , :class=>"imageman"%>
+            <%end%>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ここからホバーエフェクト -->
+　
+<!-- ここまでホバーエフェクト -->

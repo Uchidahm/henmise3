@@ -1,0 +1,14 @@
+<%= form_for(@avator, url:{controller:'avators', action:'create'})do |f| %>
+ <div class="field">
+   <%= f.label :name %>
+   <br>
+   <%= f.text_field :name,size: 140 %>
+ </div>
+ <div class="field">
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+</div>
+ <div class="action">
+   <%= f.submit %>
+ </div>
+<% end %>

@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/css/mypages.scss">
+  </head>
+  <body>
+  </body>
+</html>
+
+<link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
+<!-- ↑これはテレビ -->
+
+<!-- ここからメニューバー -->
+  <div class="menu">
+    <div class="title">MENU</div>
+    <ul class="nav">
+      <li><%=link_to "Toppage", submits_path %></li>
+      <% if user_signed_in? %>
+      <li><%=link_to "MyPage", mypages_path %></li>
+      <li><%=link_to "Posting", new_submit_path %></li>
+      <li><%= link_to 'Avator', edit_mypage_path(current_user) %></li>
+      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      <%end%>
+    </ul>
+  </div>
+<!-- ここまでメニューバー -->
+
+<div class="cintainer">
+  <%# <h1><div class="glitch" data-text="Mypage">のMypage</h1> </div> %>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class = "header_title" >
+        <h1><%= @user.name %>のMypage</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2"></div>
+
+    <div class="col-sm-3">
+      <div class="avator"><%= image_tag current_user.avator.image.to_s ,:width => '100%'  %></div>
+    </div>
+
+    <div class="col-sm-5 post">
+        <h2 class="posttitle">Post</h2>
+        <% current_user.submits.each do |submit| %>
+         <a href="/submits/<%= submit.id %>"><%= submit.name %></a>
+         <hr>
+        <% end %>
+    </div>
+
+    <div class="col-sm-2"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2"></div>
+
+    <div class="col-sm-8">
+      <h2>♡Like</h2>
+      <% current_user.liked_submits.each do |submit| %>
+      <li>
+        <%# <%= submit.user.email %>
+        <a href="/submits/<%= submit.id %>"><%= submit.name %></a>
+      </li>
+      <% end %>
+    </div>
+
+    <div class="col-sm-2"></div>
+  </div>
+</div>
